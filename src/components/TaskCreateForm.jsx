@@ -3,6 +3,9 @@ import { useDispatch } from 'react-redux';
 import './TaskCreateForm.css';
 import { CheckIcon } from '~/icons/CheckIcon';
 import { createTask } from '~/store/task';
+import TextInput from './common/TextInput';
+import NormalButton from './common/NormalButton';
+import TextArea from './common/TextArea';
 
 export const TaskCreateForm = () => {
   const dispatch = useDispatch();
@@ -88,8 +91,7 @@ export const TaskCreateForm = () => {
   return (
     <form ref={refForm} className="task_create_form" onSubmit={onSubmit} data-state={formState}>
       <div className="task_create_form__title_container">
-        <button
-          type="button"
+        <NormalButton
           onClick={handleToggle}
           className="task_create_form__mark_button"
           onFocus={handleFocus}
@@ -102,9 +104,8 @@ export const TaskCreateForm = () => {
           ) : (
             <div className="task_create_form__mark____incomplete" aria-label="Incomplete"></div>
           )}
-        </button>
-        <input
-          type="text"
+        </NormalButton>
+        <TextInput
           className="task_create_form__title"
           placeholder="Add a new task..."
           value={title}
@@ -116,19 +117,19 @@ export const TaskCreateForm = () => {
       </div>
       {formState !== 'initial' && (
         <div>
-          <textarea
+          <TextArea
             ref={setElemTextarea}
             rows={1}
             className="task_create_form__detail"
             placeholder="Add a description here..."
             value={detail}
             onChange={(e) => setDetail(e.target.value)}
+            onFocus={handleFocus}
             onBlur={handleBlur}
             disabled={formState === 'submitting'}
           />
           <div className="task_create_form__actions">
-            <button
-              type="button"
+            <NormalButton
               className="app_button"
               data-variant="secondary"
               onBlur={handleBlur}
@@ -136,16 +137,16 @@ export const TaskCreateForm = () => {
               disabled={(!title && !detail) || formState === 'submitting'}
             >
               Discard
-            </button>
+            </NormalButton>
             <div className="task_create_form__spacer"></div>
-            <button
+            <NormalButton
               type="submit"
               className="app_button"
               onBlur={handleBlur}
               disabled={!title || !detail || formState === 'submitting'}
             >
               Add
-            </button>
+            </NormalButton>
           </div>
         </div>
       )}

@@ -1,18 +1,17 @@
-import { ListIcon } from '~/icons/ListIcon';
+// import { ListIcon } from '~/icons/ListIcon';
 import './Sidebar.css';
-import { Link, useLocation } from 'react-router-dom';
-import { PlusIcon } from '~/icons/PlusIcon';
+import { useLocation } from 'react-router-dom';
+// import { PlusIcon } from '~/icons/PlusIcon';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLogout } from '~/hooks/useLogout';
 import { useEffect } from 'react';
 import { fetchLists } from '~/store/list/index';
 import SidebarAccount from '~/shared/SidebarAccount';
-import { SidebarListItem } from '~/shared/SidebarListItem';
+import SidebarListItem from '~/shared/SidebarListItem';
 import SidebarNewListButton from '~/shared/SidebarNewListButton';
 import SidebarLogin from '~/shared/SidebarLogin';
 import SidebarTitle from '~/shared/SidebarTitle';
 import SidebarSectionTitle from '~/shared/SidebarSectionTitle';
-
 
 export const Sidebar = () => {
   const dispatch = useDispatch();

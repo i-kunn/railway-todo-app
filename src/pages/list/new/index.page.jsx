@@ -1,10 +1,13 @@
 import React, { useCallback, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { BackButton } from '~/components/BackButton';
 import './index.css';
 import { createList, setCurrentList } from '~/store/list/index';
 import { useId } from '~/hooks/useId';
+import TextInput from '~/components/common/TextInput';
+import LinkButton from '~/components/common/LinkButton';
+import NormalButton from '~/components/common/NormalButton';
 
 const NewList = () => {
   const id = useId();
@@ -48,7 +51,7 @@ const NewList = () => {
           <label htmlFor={`${id}-title`} className="new_list__form_label">
             Name
           </label>
-          <input
+          <TextInput
             id={`${id}-title`}
             className="app_input"
             placeholder="Family"
@@ -57,13 +60,13 @@ const NewList = () => {
           />
         </fieldset>
         <div className="new_list__form_actions">
-          <Link to="/" data-variant="secondary" className="app_button">
+          <LinkButton to="/" variant="secondary">
             Cancel
-          </Link>
+          </LinkButton>
           <div className="new_list__form_actions_spacer"></div>
-          <button type="submit" className="app_button" disabled={isSubmitting}>
+          <NormalButton type="submit" disabled={isSubmitting}>
             Create
-          </button>
+          </NormalButton>
         </div>
       </form>
     </main>

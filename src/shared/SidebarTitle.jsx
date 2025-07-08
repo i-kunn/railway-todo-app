@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './SidebarTitle.css';
 
 const SidebarTitle = () => {
   return (

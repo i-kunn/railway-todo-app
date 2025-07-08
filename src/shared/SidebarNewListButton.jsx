@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { PlusIcon } from '~/icons/PlusIcon';
-import './SidebarNewListButton.css';
 
 const SidebarNewListButton = () => (
   <li>

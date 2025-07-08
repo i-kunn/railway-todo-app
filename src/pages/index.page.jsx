@@ -9,6 +9,9 @@ const Home = () => {
 
   const currentListId = useSelector((state) => state.list.current);
 
+  const lists = useSelector((state) => state.list.lists);
+  console.log('lists', lists);
+
   useEffect(() => {
     dispatch(fetchLists());
   }, []);

@@ -13,7 +13,7 @@ import ListIndex from '~/pages/lists/[listId]/index.page';
 
 export const Router = () => {
   const auth = useSelector((state) => state.auth.token !== null);
-
+  console.log('auth', auth);
   return (
     <BrowserRouter>
       <Sidebar />

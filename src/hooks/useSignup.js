@@ -18,7 +18,7 @@ export const useSignup = () => {
       ).unwrap();
       navigate('/');
     },
-    [useDispatch]
+    [dispatch, navigate]
   );
 
   return {

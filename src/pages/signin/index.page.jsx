@@ -1,9 +1,14 @@
 import React, { useCallback, useState } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useLogin } from '~/hooks/useLogin';
 import { useId } from '~/hooks/useId';
 import './index.css';
+import TextInput from '~/components/common/TextInput';
+import  LinkButton  from '~/components/common/LinkButton';
+import  NormalButton  from '~/components/common/NormalButton';
+import FormField from '~/components/common/FormField';
+
 
 const SignIn = () => {
   const auth = useSelector((state) => state.auth.token !== null);
@@ -42,11 +47,8 @@ const SignIn = () => {
       <h2 className="signin__title">Login</h2>
       <p className="signin__error">{errorMessage}</p>
       <form className="signin__form" onSubmit={onSubmit}>
-        <fieldset className="signin__form_field">
-          <label htmlFor={`${id}-email`} className="signin__form_label">
-            E-mail Address
-          </label>
-          <input
+        <FormField id={`${id}-email`} label="E-mail Address" className="signin__form_field">
+          <TextInput
             id={`${id}-email`}
             type="email"
             autoComplete="email"
@@ -54,12 +56,9 @@ const SignIn = () => {
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
-        </fieldset>
-        <fieldset className="signin__form_field">
-          <label htmlFor={`${id}-password`} className="signin__form_label">
-            Password
-          </label>
-          <input
+        </FormField>
+        <FormField id={`${id}-password`} label="Password" className="signin__form_field">
+          <TextInput
             id={`${id}-password`}
             type="password"
             autoComplete="current-password"
@@ -67,15 +66,13 @@ const SignIn = () => {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
-        </fieldset>
+        </FormField>
         <div className="signin__form_actions">
-          <Link className="app_button" data-variant="secondary" to="/signup">
+          <LinkButton to="/signup" data-variant="secondary">
             Register
-          </Link>
+          </LinkButton>
           <div className="signin__form_actions_spacer"></div>
-          <button type="submit" className="app_button" disabled={isSubmitting}>
-            Login
-          </button>
+          <NormalButton disabled={isSubmitting}>Login</NormalButton>
         </div>
       </form>
     </main>

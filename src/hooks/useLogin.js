@@ -18,7 +18,7 @@ export const useLogin = () => {
 
       navigate('/');
     },
-    [useDispatch]
+    [dispatch, navigate]
   );
 
   return {

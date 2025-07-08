@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './SidebarLogin.css';
 
 const SidebarLogin = () => {
   return (

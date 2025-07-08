@@ -1,11 +1,16 @@
 import { useCallback, useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { BackButton } from '~/components/BackButton';
 import './index.css';
 import { setCurrentList } from '~/store/list';
 import { fetchTasks, updateTask, deleteTask } from '~/store/task';
 import { useId } from '~/hooks/useId';
+import TextInput from '~/components/common/TextInput';
+import LinkButton from '~/components/common/LinkButton';
+import NormalButton from '~/components/common/NormalButton';
+import TextArea from '~/components/common/TextArea';
+import FormField from '~/components/common/FormField';
 
 const EditTask = () => {
   const id = useId();
@@ -45,7 +50,7 @@ const EditTask = () => {
       void dispatch(updateTask({ id: taskId, title, detail, done }))
         .unwrap()
         .then(() => {
-          history.push(`/lists/${listId}`);
+          navigate(`/lists/${listId}`);
         })
         .catch((err) => {
           setErrorMessage(err.message);
@@ -83,59 +88,44 @@ const EditTask = () => {
       <h2 className="edit_list__title">Edit List</h2>
       <p className="edit_list__error">{errorMessage}</p>
       <form className="edit_list__form" onSubmit={onSubmit}>
-        <fieldset className="edit_list__form_field">
-          <label htmlFor={`${id}-title`} className="edit_list__form_label">
-            Title
-          </label>
-          <input
+        <FormField id={`${id}-title`} label="Title" className="edit_list__form_field">
+          <TextInput
             id={`${id}-title`}
             className="app_input"
             placeholder="Buy some milk"
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-        </fieldset>
-        <fieldset className="edit_list__form_field">
-          <label htmlFor={`${id}-detail`} className="edit_list__form_label">
-            Description
-          </label>
-          <textarea
+        </FormField>
+        <FormField id={`${id}-detail`} label="Description" className="edit_list__form_field">
+          <TextArea
             id={`${id}-detail`}
             className="app_input"
             placeholder="Blah blah blah"
             value={detail}
             onChange={(event) => setDetail(event.target.value)}
           />
-        </fieldset>
-        <fieldset className="edit_list__form_field">
-          <label htmlFor={`${id}-done`} className="edit_list__form_label">
-            Is Done
-          </label>
+        </FormField>
+        <FormField id={`${id}-done`} label="Is Done" className="edit_list__form_field">
           <div>
-            <input
+            <TextInput
               id={`${id}-done`}
               type="checkbox"
               checked={done}
               onChange={(event) => setDone(event.target.checked)}
             />
           </div>
-        </fieldset>
+        </FormField>
         <div className="edit_list__form_actions">
-          <Link to="/" data-variant="secondary" className="app_button">
+          <LinkButton to="/" data-variant="secondary">
             Cancel
-          </Link>
+          </LinkButton>
           <div className="edit_list__form_actions_spacer"></div>
-          <button
-            type="button"
-            className="app_button edit_list__form_actions_delete"
-            disabled={isSubmitting}
-            onClick={handleDelete}
-          >
+
+          <NormalButton onClick={handleDelete} disabled={isSubmitting}>
             Delete
-          </button>
-          <button type="submit" className="app_button" disabled={isSubmitting}>
-            Update
-          </button>
+          </NormalButton>
+          <NormalButton disabled={isSubmitting}>Update</NormalButton>
         </div>
       </form>
     </main>

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { ListIcon } from '~/icons/ListIcon';
-import './SidebarListItem.css';
 
 const SidebarListItem = ({ id, title, active }) => (
   <li>

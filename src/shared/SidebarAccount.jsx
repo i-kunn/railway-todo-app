@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import './SidebarAccount.css';
 
 const SidebarAccount = ({ userName, onLogout }) => (
   <div className="sidebar__account">

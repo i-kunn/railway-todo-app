@@ -1,0 +1,16 @@
+/* テキストエリアの基本スタイル */
+.app_textarea {
+  width: 100%;
+  padding: 0.5em 0.75em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  resize: vertical; /* サイズ変更は縦方向のみ */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app_textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}

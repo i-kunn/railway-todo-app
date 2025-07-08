@@ -1,10 +1,14 @@
 import { useCallback, useState, useEffect } from 'react';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { BackButton } from '~/components/BackButton';
 import './index.css';
 import { fetchLists, updateList, deleteList } from '~/store/list';
 import { useId } from '~/hooks/useId';
+import LinkButton from '~/components/common/LinkButton';
+import NormalButton from '~/components/common/NormalButton';
+import FormField from '~/components/common/FormField';
+import TextInput from '~/components/common/TextInput';
 
 const EditList = () => {
   const id = useId();
@@ -77,34 +81,28 @@ const EditList = () => {
       <h2 className="edit_list__title">Edit List</h2>
       <p className="edit_list__error">{errorMessage}</p>
       <form className="edit_list__form" onSubmit={onSubmit}>
-        <fieldset className="edit_list__form_field">
-          <label htmlFor={`${id}-title`} className="edit_list__form_label">
-            Name
-          </label>
-          <input
-            id={`${id}-title`}
-            className="app_input"
-            placeholder="Family"
+        <FormField id={`${id}-title`} label="Name" className="edit_list__form_field">
+          <TextInput
             value={title}
+            placeholder="Family"
             onChange={(event) => setTitle(event.target.value)}
           />
-        </fieldset>
+        </FormField>
         <div className="edit_list__form_actions">
-          <Link to="/" data-variant="secondary" className="app_button">
+          <LinkButton to="/" data-variant="secondary">
             Cancel
-          </Link>
+          </LinkButton>
           <div className="edit_list__form_actions_spacer"></div>
-          <button
+
+          <NormalButton
             type="button"
-            className="app_button edit_list__form_actions_delete"
             disabled={isSubmitting}
             onClick={handleDelete}
+            className="edit_list__form_actions_delete"
           >
             Delete
-          </button>
-          <button type="submit" className="app_button" disabled={isSubmitting}>
-            Update
-          </button>
+          </NormalButton>
+          <NormalButton  type="submit" disabled={isSubmitting}>Update</NormalButton>
         </div>
       </form>
     </main>
