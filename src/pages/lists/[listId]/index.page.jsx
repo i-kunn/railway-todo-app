@@ -6,14 +6,24 @@ import { TaskCreateForm } from '~/components/TaskCreateForm';
 import { setCurrentList } from '~/store/list';
 import { fetchTasks } from '~/store/task';
 import './index.css';
-import LinkButton from '~/components/common/LinkButton';
+// station4で追加
+import NormalButton from '~/components/common/NormalButton';
+// station4でコメントアウト
+// import LinkButton from '~/components/common/LinkButton';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ListIndex = () => {
   const dispatch = useDispatch();
   const { listId } = useParams();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const isLoading = useSelector((state) => state.task.isLoading || state.list.isLoading);
-
+  const handleEdit = () => {
+    navigate(`/lists/${listId}/edit`, {
+      state: { backgroundLocation: location },
+    });
+  };
   const tasks = useSelector((state) => state.task.tasks);
   const listName = useSelector((state) => {
     const currentId = state.list.current;
@@ -25,6 +35,9 @@ const ListIndex = () => {
   });
 
   useEffect(() => {
+    if (!listId) {
+      return;
+    }
     dispatch(setCurrentList(listId));
     dispatch(fetchTasks()).unwrap();
   }, [listId]);
@@ -41,7 +54,9 @@ const ListIndex = () => {
           <span className="tasks_list__title__count">{incompleteTasksCount}</span>
         )}
         <div className="tasks_list__title_spacer"></div>
-        <LinkButton to={`/lists/${listId}/edit`}>Edit...</LinkButton>
+        {/* station4でコメントアウト */}
+        {/* <LinkButton to={`/lists/${listId}/edit`}>Edit...</LinkButton> */}
+        <NormalButton onClick={handleEdit}>Edit...</NormalButton>
       </div>
       <div className="tasks_list__items">
         <TaskCreateForm />

@@ -9,7 +9,7 @@ import TextArea from './common/TextArea';
 
 export const TaskCreateForm = () => {
   const dispatch = useDispatch();
-
+  const [dueDate, setDueDate] = useState('');
   const refForm = useRef(null);
   const [elemTextarea, setElemTextarea] = useState(null);
 
@@ -57,7 +57,9 @@ export const TaskCreateForm = () => {
 
       setFormState('submitting');
 
-      void dispatch(createTask({ title, detail, done }))
+      const isoDueDate = dueDate ? new Date(dueDate).toISOString() : null;
+
+      void dispatch(createTask({ title, detail, done, limit: isoDueDate }))
         .unwrap()
         .then(() => {
           handleDiscard();
@@ -67,7 +69,7 @@ export const TaskCreateForm = () => {
           setFormState('focused');
         });
     },
-    [title, detail, done]
+    [title, detail, done, dueDate]
   );
 
   useEffect(() => {
@@ -147,6 +149,12 @@ export const TaskCreateForm = () => {
             >
               Add
             </NormalButton>
+            <input
+              type="datetime-local"
+              value={dueDate}
+              onChange={(e) => setDueDate(e.target.value)}
+              className="task_create_form__duedate"
+            />
           </div>
         </div>
       )}

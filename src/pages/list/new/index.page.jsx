@@ -8,6 +8,7 @@ import { useId } from '~/hooks/useId';
 import TextInput from '~/components/common/TextInput';
 import LinkButton from '~/components/common/LinkButton';
 import NormalButton from '~/components/common/NormalButton';
+import FormField from '~/components/common/FormField';
 
 const NewList = () => {
   const id = useId();
@@ -47,7 +48,8 @@ const NewList = () => {
       <h2 className="new_list__title">New List</h2>
       <p className="new_list__error">{errorMessage}</p>
       <form className="new_list__form" onSubmit={onSubmit}>
-        <fieldset className="new_list__form_field">
+        {/* <fieldset className="new_list__form_field"> */}
+        <FormField id={`${id}-title`} label="Name" className="new_list__form_field">
           <label htmlFor={`${id}-title`} className="new_list__form_label">
             Name
           </label>
@@ -58,7 +60,7 @@ const NewList = () => {
             value={title}
             onChange={(event) => setTitle(event.target.value)}
           />
-        </fieldset>
+        </FormField>
         <div className="new_list__form_actions">
           <LinkButton to="/" variant="secondary">
             Cancel

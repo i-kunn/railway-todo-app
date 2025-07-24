@@ -5,10 +5,9 @@ import { useLogin } from '~/hooks/useLogin';
 import { useId } from '~/hooks/useId';
 import './index.css';
 import TextInput from '~/components/common/TextInput';
-import  LinkButton  from '~/components/common/LinkButton';
-import  NormalButton  from '~/components/common/NormalButton';
+import LinkButton from '~/components/common/LinkButton';
+import NormalButton from '~/components/common/NormalButton';
 import FormField from '~/components/common/FormField';
-
 
 const SignIn = () => {
   const auth = useSelector((state) => state.auth.token !== null);
@@ -72,7 +71,9 @@ const SignIn = () => {
             Register
           </LinkButton>
           <div className="signin__form_actions_spacer"></div>
-          <NormalButton disabled={isSubmitting}>Login</NormalButton>
+          <NormalButton type="submit" disabled={isSubmitting}>
+            Login
+          </NormalButton>
         </div>
       </form>
     </main>

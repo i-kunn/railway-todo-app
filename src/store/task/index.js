@@ -26,13 +26,14 @@ export const taskSlice = createSlice({
     setTaskIsLoading: (state, action) => {
       state.isLoading = action.payload;
     },
+    // station3でlimitを追加している
     addTask: (state, action) => {
       const title = action.payload.title;
       const id = action.payload.id;
       const detail = action.payload.detail;
       const done = action.payload.done;
-
-      state.tasks.push({ title, id, detail, done });
+      const limit = action.payload.limit;
+      state.tasks.push({ title, id, detail, done, limit });
     },
     mutateTask: (state, action) => {
       const id = action.payload.id;
