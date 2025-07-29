@@ -6,10 +6,7 @@ import { TaskCreateForm } from '~/components/TaskCreateForm';
 import { setCurrentList } from '~/store/list';
 import { fetchTasks } from '~/store/task';
 import './index.css';
-// station4で追加
 import NormalButton from '~/components/common/NormalButton';
-// station4でコメントアウト
-// import LinkButton from '~/components/common/LinkButton';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const ListIndex = () => {
@@ -54,8 +51,7 @@ const ListIndex = () => {
           <span className="tasks_list__title__count">{incompleteTasksCount}</span>
         )}
         <div className="tasks_list__title_spacer"></div>
-        {/* station4でコメントアウト */}
-        {/* <LinkButton to={`/lists/${listId}/edit`}>Edit...</LinkButton> */}
+
         <NormalButton onClick={handleEdit}>Edit...</NormalButton>
       </div>
       <div className="tasks_list__items">

@@ -94,34 +94,3 @@ const Home = () => {
 
 export default Home;
 
-// import React, { useEffect } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { fetchLists } from '~/store/list/index';
-
-// const Home = () => {
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-
-//   const currentListId = useSelector((state) => state.list.current);
-//   const lists = useSelector((state) => state.list.lists);
-
-//   console.log('lists', lists);
-//   console.log('currentListId', currentListId);
-
-//   useEffect(() => {
-//     console.log('fetchLists 実行');
-//     dispatch(fetchLists());
-//   }, []);
-
-//   useEffect(() => {
-//     console.log('currentListId変更時 useEffect 発火', currentListId);
-//     if (currentListId) {
-//       navigate(`/lists/${currentListId}`);
-//     }
-//   }, [currentListId]);
-
-//   return <div></div>;
-// };
-
-// export default Home;

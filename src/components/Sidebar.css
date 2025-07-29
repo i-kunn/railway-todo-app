@@ -126,3 +126,53 @@
 .sidebar__login {
   margin-top: 1.5rem;
 }
+/* station6 */
+/* --- ここから追記 --- */
+@media (max-width: 768px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 280px;
+    height: 100%;
+    background-color: var(--slate-100); /* 必須 */
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
+  } 
+  .sidebar.open {
+    left: 0;
+  }
+
+
+  /* ハンバーガーメニューボタン */
+  .hamburger-menu {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  /* 背景オーバーレイ */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 900;
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+}
+/* --- ここまで追記 --- */
+

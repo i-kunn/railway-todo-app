@@ -1,15 +1,11 @@
 import { useCallback, useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-// station4でコメントアウト
-// import { BackButton } from '~/components/BackButton';
 import './index.css';
 import { setCurrentList } from '~/store/list';
 import { fetchTasks, updateTask, deleteTask } from '~/store/task';
 import { useId } from '~/hooks/useId';
 import TextInput from '~/components/common/TextInput';
-// station4でコメントアウト
-// import LinkButton from '~/components/common/LinkButton';
 import NormalButton from '~/components/common/NormalButton';
 import TextArea from '~/components/common/TextArea';
 import FormField from '~/components/common/FormField';
@@ -49,26 +45,6 @@ const EditTask = () => {
     void dispatch(fetchTasks());
   }, [listId]);
 
-  // const onSubmit = useCallback(
-  //   (event) => {
-  //     event.preventDefault();
-
-  //     setIsSubmitting(true);
-
-  //     void dispatch(updateTask({ id: taskId, title, detail, done }))
-  //       .unwrap()
-  //       .then(() => {
-  //         navigate(`/lists/${listId}`);
-  //       })
-  //       .catch((err) => {
-  //         setErrorMessage(err.message);
-  //       })
-  //       .finally(() => {
-  //         setIsSubmitting(false);
-  //       });
-  //   },
-  //   [title, taskId, listId, detail, done]
-  // );
   const onSubmit = useCallback(
     (event) => {
       event.preventDefault();
@@ -78,10 +54,6 @@ const EditTask = () => {
 
       void dispatch(updateTask({ id: taskId, title, detail, done, limit: isoLimit }))
         .unwrap()
-        // station4でコメントアウト
-        // .then(() => {
-        //   navigate(`/lists/${listId}`);
-        // })
         .then(() => navigate(-1))
         .catch((err) => {
           setErrorMessage(err.message);
@@ -102,10 +74,7 @@ const EditTask = () => {
 
     void dispatch(deleteTask({ id: taskId }))
       .unwrap()
-      // station4でコメントアウト
-      // .then(() => {
-      //   navigate(`/`);
-      // })
+
       .then(() => navigate(-1))
       .catch((err) => {
         setErrorMessage(err.message);
@@ -118,8 +87,6 @@ const EditTask = () => {
   return (
     <Modal onClose={handleClose}>
       <main className="edit_list">
-        {/* station4でコメントアウト */}
-        {/* <BackButton /> */}
         <h2 className="edit_list__title">Edit List</h2>
         <p className="edit_list__error">{errorMessage}</p>
         <form className="edit_list__form" onSubmit={onSubmit}>
@@ -152,10 +119,6 @@ const EditTask = () => {
             </div>
           </FormField>
           <div className="edit_list__form_actions">
-            {/* station4でコメントアウト */}
-            {/* <LinkButton to="/" data-variant="secondary">
-            Cancel
-          </LinkButton> */}
             <NormalButton type="button" onClick={handleClose} data-variant="secondary">
               Cancel
             </NormalButton>

@@ -18,3 +18,19 @@ function App() {
 }
 
 export default App;
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import { fetchUser } from '~/store/auth/index';
+// import { Router } from './routes/Router';
+
+// function App() {
+//   const dispatch = useDispatch();
+
+//   useEffect(() => {
+//     void dispatch(fetchUser());
+//   }, [dispatch]);
+
+//   return <Router />;
+// }
+
+// export default App;

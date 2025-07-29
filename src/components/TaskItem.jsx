@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { PencilIcon } from '~/icons/PencilIcon';
 import { CheckIcon } from '~/icons/CheckIcon';
@@ -70,12 +70,9 @@ const TaskItem = ({ task }) => {
         <NormalButton onClick={handleEdit} className="task_item__title_action">
           <PencilIcon aria-label="Edit" />
         </NormalButton>
-        {/* <Link to={`/lists/${listId}/tasks/${id}`} className="task_item__title_action"> */}
-        {/* <PencilIcon aria-label="Edit" />
-        </Link> */}
       </div>
       <div className="task_item__detail">{detail}</div>
-      {/* <div className="task_item__due">期限: {new Date(task.limit).toLocaleDateString()}</div> */}
+
       <div className="task_item__due">
         期限:{' '}
         {task.limit
